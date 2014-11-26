@@ -1,0 +1,107 @@
+/* General Demo Style */
+/**, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body, html { font-size: 100%; padding: 0; margin: 0; }*/
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+/*.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }*/
+
+button {
+  border: none;
+  padding: 0.6em 1.2em;
+  background: #c0392b;
+  color: #fff;
+  /*font-family: 'Lato', Calibri, Arial, sans-serif;*/
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  margin: 3px 2px;
+  border-radius: 2px;
+}
+
+button:hover {
+  background: #A5281B;
+}
+
+/* General styles for the modal */
+
+.mkmd-modal {
+  position: fixed;
+  left: 50%;
+  width: 100%;
+  z-index: 2000;
+  visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.mkmd-show {
+  visibility: visible;
+}
+
+.mkmd-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.mkmd-show ~ .mkmd-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Content styles */
+.mkmd-content {
+  color: #000;
+  background: #fff;
+  position: relative;
+  border-radius: 3px;
+  margin: 0 auto;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Effect 7:  slide and stick to top */
+.mkmd-effect-7{
+  bottom: 0px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.mkmd-effect-7 .mkmd-content {
+  -webkit-transform: translateY(200%);
+  -moz-transform: translateY(200%);
+  -ms-transform: translateY(200%);
+  transform: translateY(200%);
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+  opacity: 0;
+}
+
+.mkmd-show.mkmd-effect-7 .mkmd-content {
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  border-radius: 0 0 3px 3px;
+  opacity: 1;
+}

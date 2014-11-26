@@ -1,0 +1,31 @@
+{
+  "name": "ng-mk-modal",
+  "version": "0.0.1",
+  "description": "Custom effect modals.",
+  "keywords": [
+    "angularjs",
+    "modal"
+  ],
+
+  "authors": [
+    "mak"
+  ],
+  
+  "license": "MIT",
+
+  "main": [
+    "dist/mkModal.css",
+    "dist/mkModal.js"
+  ],
+
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.18"
+  }
+}
