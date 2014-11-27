@@ -6,25 +6,6 @@ body, html { font-size: 100%; padding: 0; margin: 0; }*/
 /*.clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }*/
 
-button {
-  border: none;
-  padding: 0.6em 1.2em;
-  background: #c0392b;
-  color: #fff;
-  /*font-family: 'Lato', Calibri, Arial, sans-serif;*/
-  font-size: 1em;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: inline-block;
-  margin: 3px 2px;
-  border-radius: 2px;
-}
-
-button:hover {
-  background: #A5281B;
-}
-
 /* General styles for the modal */
 
 .mkmd-modal {
