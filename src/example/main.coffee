@@ -4,17 +4,20 @@
   app.controller "demoCtrl", ($scope) ->
 
     $scope.effects = [{
-      name: "Slide up stick at bottom",
-      value: "susab"
-    }, {
       name: "Fade in and scale up",
       value: "fi"
     }, {
-      name: "Slide from the right slide-left",
+      name: "Slide from the right",
       value: "sl"
     }, {
-      name: "Slide from the bottom slide-up",
+      name: "Slide from the bottom",
       value: "su"
+    }, {
+      name: "Slide down and stick at top",
+      value: "sdsat"
+    }, {
+      name: "Slide up and stick at bottom",
+      value: "susab"
     }, {
       name: "Newspaper",
       value: "n"
@@ -24,9 +27,6 @@
     }, {
       name: "Side fall",
       value: "sf"
-    }, {
-      name: "Slide down and stick at top",
-      value: "sdsat"
     }, {
       name: "3D flip horizontal",
       value: "3dfh"
@@ -46,10 +46,10 @@
       name: "3D slit",
       value: "3dslit"
     }, {
-      name: "3D Rotate from bottom 3d-rotate-up",
+      name: "3D Rotate from bottom",
       value: "3dru"
     }, {
-      name: "3D Rotate in from left 3d-rotate-right",
+      name: "3D Rotate in from left",
       value: "3drr"
     }]
 
@@ -61,8 +61,8 @@
       modalData:
         effect: "mkmd-effect-fi"
         style:
-          height: "70%"
-          width: "100%"
+          height: "60%"
+          width: "70%"
 
     return
 

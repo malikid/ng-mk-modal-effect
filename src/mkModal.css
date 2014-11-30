@@ -2,7 +2,6 @@
 
 .mkmd-modal {
   position: fixed;
-  top: 50%;
   left: 50%;
   width: 50%;
   height: 50%;
@@ -55,39 +54,6 @@
 
 
 /* Individual modal styles with animations/transitions */
-
-/**
- * Slide from bottom and stick to bottom
- * slide-up-stick-at-bottom
- **/
-
-.mkmd-effect-susab{
-  bottom: 0px;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.mkmd-effect-susab .mkmd-content {
-  -webkit-transform: translateY(200%);
-  -moz-transform: translateY(200%);
-  -ms-transform: translateY(200%);
-  transform: translateY(200%);
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  transition: all .3s;
-  opacity: 0;
-}
-
-.mkmd-show.mkmd-effect-susab .mkmd-content {
-  -webkit-transform: translateY(0%);
-  -moz-transform: translateY(0%);
-  -ms-transform: translateY(0%);
-  transform: translateY(0%);
-  border-radius: 0 0 3px 3px;
-  opacity: 1;
-}
 
 /**
  * Fade in and scale up
@@ -159,6 +125,70 @@
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0);
+  opacity: 1;
+}
+
+/**
+ * Slide from up and stick to top
+ * slide-down-stick-at-top
+ **/
+.mkmd-effect-sdsat{
+  top: 0;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.mkmd-effect-sdsat .mkmd-content {
+  -webkit-transform: translateY(-200%);
+  -moz-transform: translateY(-200%);
+  -ms-transform: translateY(-200%);
+  transform: translateY(-200%);
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+  opacity: 0;
+}
+
+.mkmd-show.mkmd-effect-sdsat .mkmd-content {
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  border-radius: 0 0 3px 3px;
+  opacity: 1;
+}
+
+/**
+ * Slide from bottom and stick to bottom
+ * slide-up-stick-at-bottom
+ **/
+.mkmd-effect-susab{
+  bottom: 0px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.mkmd-effect-susab .mkmd-content {
+  -webkit-transform: translateY(200%);
+  -moz-transform: translateY(200%);
+  -ms-transform: translateY(200%);
+  transform: translateY(200%);
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+  opacity: 0;
+}
+
+.mkmd-show.mkmd-effect-susab .mkmd-content {
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  border-radius: 0 0 3px 3px;
   opacity: 1;
 }
 
@@ -247,38 +277,6 @@
   -moz-transform: translate(0%) translateZ(0) rotate(0deg);
   -ms-transform: translate(0%) translateZ(0) rotate(0deg);
   transform: translate(0%) translateZ(0) rotate(0deg);
-  opacity: 1;
-}
-
-/**
- * Slide from up and stick to top
- * slide-down-stick-at-top
- **/
-.mkmd-effect-sdsat{
-  top: 0;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.mkmd-effect-sdsat .mkmd-content {
-  -webkit-transform: translateY(-200%);
-  -moz-transform: translateY(-200%);
-  -ms-transform: translateY(-200%);
-  transform: translateY(-200%);
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  transition: all .3s;
-  opacity: 0;
-}
-
-.mkmd-show.mkmd-effect-sdsat .mkmd-content {
-  -webkit-transform: translateY(0%);
-  -moz-transform: translateY(0%);
-  -ms-transform: translateY(0%);
-  transform: translateY(0%);
-  border-radius: 0 0 3px 3px;
   opacity: 1;
 }
 

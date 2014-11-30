@@ -12,6 +12,7 @@ module.exports = (grunt) ->
         files: {
           'dist/mkModal.html': 'src/mkModal.jade'
           'example/index.html': 'src/example/index.jade'
+          'example/simpleExample.html': 'src/example/simpleExample.jade'
         }
       },
     }
@@ -23,6 +24,7 @@ module.exports = (grunt) ->
         files: {
           'dist/mkModal.js': 'temp/mkModal.coffee'
           'example/main.js': 'src/example/main.coffee'
+          'example/simpleExample.js': 'src/example/simpleExample.coffee'
         }
       }
     }
@@ -80,6 +82,14 @@ module.exports = (grunt) ->
           open: 'http://localhost:9000/index.html'
         }
       }
+      simpleExample: {
+        options: {
+          port: 9000,
+          base: ['example'],
+          livereload: true,
+          open: 'http://localhost:9000/simpleExample.html'
+        }
+      }
     }
 
 
@@ -104,17 +114,24 @@ module.exports = (grunt) ->
   grunt.registerTask "server", [
     "clean"
     "build"
-    "connect"
+    "connect:example"
     "watch"
   ]
+
+  grunt.registerTask "example", [
+    "clean"
+    "build"
+    "connect:simpleExample"
+    "watch"
+  ]
+
   grunt.registerTask "build", [
-    # "clean"
+    "clean"
     "jade"
     "string-replace"
     "coffee"
     "copy:build"
     "copy:example"
-    # "devJs"
   ]
 
   grunt.registerTask "default", [
