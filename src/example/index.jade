@@ -1,16 +1,22 @@
+doctype html
 html
 head
   title
   meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
   link(rel='stylesheet', href='dist/mkModal.css')
-  script(src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular.js', type='text/javascript', charset='utf-8')
-  script(src="//code.jquery.com/jquery-1.11.0.min.js")
+  script(src="lib/angular/angular.min.js")
+  script(src="lib/jquery/dist/jquery.min.js")
   script(src='dist/mkModal.js')
   script(src='main.js')
 
 body(ng-app='demo', ng-controller='demoCtrl')
-  button#modalTriggerBtn Sticky Bottom
-  mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", height="modalHeight")
+  button#modalTriggerBtn Open Modal
+
+  div(ng-repeat="effect in effects")
+    input(id="{{effect.value}}", name="effectType", type="radio", ng-model="data.effectType", value="{{effect.value}}", ng-change="setModalData()")
+    label(for="{{effect.value}}") {{effect.name}}
+
+  mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData")
     h3 Modal Dialog
     div
       p This is a modal window. You can do the following things with it:

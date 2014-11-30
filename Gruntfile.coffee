@@ -99,7 +99,6 @@ module.exports = (grunt) ->
 
 
 
-
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
   # Register tasks
   grunt.registerTask "server", [
@@ -109,12 +108,13 @@ module.exports = (grunt) ->
     "watch"
   ]
   grunt.registerTask "build", [
-    "clean"
+    # "clean"
     "jade"
     "string-replace"
     "coffee"
     "copy:build"
     "copy:example"
+    # "devJs"
   ]
 
   grunt.registerTask "default", [

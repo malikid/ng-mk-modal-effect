@@ -6,18 +6,14 @@
     "angularjs",
     "modal"
   ],
-
   "authors": [
     "mak"
   ],
-  
   "license": "MIT",
-
   "main": [
     "dist/mkModal.css",
     "dist/mkModal.js"
   ],
-
   "ignore": [
     "**/.*",
     "node_modules",
@@ -26,6 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.18"
+    "angular": "~1.2.18",
+    "jquery": "~2.1.1"
   }
 }
