@@ -7,7 +7,7 @@
       modalData:
         effect: "mkmd-effect-susab"
         style:
-          height: "90%"
+          height: "80%"
           width: "100%"
 
     return
