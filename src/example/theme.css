@@ -121,3 +121,42 @@ button:hover, button:focus {
         box-shadow: 0 -1px 0 rgba(0,0,0,0.1);
     }
 }
+
+.mkmd-content h3 {
+    margin: 0;
+    padding: 0.4em;
+    text-align: center;
+    font-size: 2.4em;
+    font-weight: 300;
+    opacity: 0.8;
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px 3px 0 0;
+}
+
+.mkmd-content > div {
+    padding: 15px 40px 30px;
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.15em;
+    text-align: left;
+}
+
+.mkmd-content > div p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.mkmd-content > div ul {
+    margin: 0;
+    padding: 0 0 30px 20px;
+}
+
+.mkmd-content > div ul li {
+    padding: 5px 0;
+}
+
+.mkmd-content button {
+    display: block;
+    margin: 0 auto;
+    font-size: 0.8em;
+}

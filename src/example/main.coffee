@@ -87,7 +87,7 @@
       modalData:
         effect: "mkmd-effect-fi"
         style:
-          height: "60%"
+          height: "auto"
           width: "70%"
 
     return
