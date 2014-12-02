@@ -13,13 +13,6 @@ angular.module("mkModal", []).directive "mkModal", () ->
     link: (scope, element, attrs) ->
 
       scope.oldEffect = null
-      scope.isWithPerspective = false
-
-      checkWithPerspective = (effect) ->
-
-        switch effect
-          when "mkmd-effect-sup", "mkmd-effect-slp", "mkmd-effect-sdp" then return true
-          else return false
 
       removeModalHandler = () ->
 
@@ -31,7 +24,22 @@ angular.module("mkModal", []).directive "mkModal", () ->
         $modal.removeClass(scope.oldEffect) if scope.oldEffect
         scope.oldEffect = newEffect
         $modal.addClass(newEffect)
-        scope.isWithPerspective = checkWithPerspective(newEffect)
+
+      setStyle = (effect, style) ->
+
+        cssObj =
+          height: style.height
+          width: style.width
+          left: style.left
+
+        switch effect
+          when "mkmd-effect-sdsat" then break
+          when "mkmd-effect-susab" then $modal.removeClass("mkmd-modal-basic-y")
+          else
+            $modal.addClass("mkmd-modal-basic-y")
+            cssObj.top = style.top
+
+        $modal.css(cssObj)
 
       init = (data) ->
 
@@ -39,7 +47,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
           setEffect(data.effect)
 
         if data.style
-          $modal.css({height: data.style.height, width: data.style.width})
+          setStyle(data.effect, data.style)
 
       $overlay = $(".mkmd-overlay")
       $element = $("#" + scope.triggerElementId)
@@ -64,14 +72,12 @@ angular.module("mkModal", []).directive "mkModal", () ->
         $overlay.off("click", removeModalHandler)
         $overlay.on("click", removeModalHandler)
 
-        if scope.isWithPerspective
-          setTimeout () ->
-            $(document.documentElement).addClass("md-perspective")
-          , 25
       )
 
       $closeBtn.on("click", (el) ->
+
         el.stopPropagation()
         removeModalHandler()
+        
       )
   }

@@ -59,6 +59,13 @@ module.exports = (grunt) ->
             dest: "example/lib/"
             filter: "isFile"
           }
+          {
+            expand: true
+            cwd: "src/example/"
+            src: "*.css"
+            dest: "example/"
+            filter: "isFile"
+          }
         ]
 
     watch:

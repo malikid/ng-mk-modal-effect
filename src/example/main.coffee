@@ -3,7 +3,7 @@
   app = ng.module("demo", ["mkModal"])
   app.controller "demoCtrl", ($scope) ->
 
-    $scope.effects = [{
+    $scope.effects_1 = [{
       name: "Fade in and scale up",
       value: "fi"
     }, {
@@ -27,7 +27,33 @@
     }, {
       name: "Side fall",
       value: "sf"
-    }, {
+    # }, {
+    #   name: "3D flip horizontal",
+    #   value: "3dfh"
+    # }, {
+    #   name: "3D flip vertical",
+    #   value: "3dfv"
+    # }, {
+    #   name: "3D sign",
+    #   value: "3dsign"
+    # }, {
+    #   name: "Super scaled",
+    #   value: "ss"
+    # }, {
+    #   name: "Just me",
+    #   value: "jm"
+    # }, {
+    #   name: "3D slit",
+    #   value: "3dslit"
+    # }, {
+    #   name: "3D Rotate from bottom",
+    #   value: "3dru"
+    # }, {
+    #   name: "3D Rotate in from left",
+    #   value: "3drr"
+    }]
+
+    $scope.effects_2 = [{
       name: "3D flip horizontal",
       value: "3dfh"
     }, {

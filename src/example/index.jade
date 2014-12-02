@@ -3,6 +3,7 @@ html
 head
   title
   meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+  link(rel='stylesheet', href='theme.css')
   link(rel='stylesheet', href='dist/mkModal.css')
   script(src="lib/angular/angular.min.js")
   script(src="lib/jquery/dist/jquery.min.js")
@@ -10,11 +11,29 @@ head
   script(src='main.js')
 
 body(ng-app='demo', ng-controller='demoCtrl')
-  button#modalTriggerBtn Open Modal
 
-  div(ng-repeat="effect in effects")
-    input(id="{{effect.value}}", name="effectType", type="radio", ng-model="data.effectType", value="{{effect.value}}", ng-change="setModalData()")
-    label(for="{{effect.value}}") {{effect.name}}
+  header
+    h1 Modal Style Settings
+      span
+        label(for="styleHeight") Height
+        input#styleHeight(type="text", ng-model="data.modalData.style.height")
+        label(for="styleWidth") Width
+        input#styleWidth(type="text", ng-model="data.modalData.style.width")
+        label(for="styleTop") Top
+        input#styleTop(type="text", ng-model="data.modalData.style.top")
+        label(for="styleLeft") Left
+        input#styleLeft(type="text", ng-model="data.modalData.style.left")
+        button#modalTriggerBtn Open Modal
+
+  .main.clearfix
+    .column
+      .item(ng-repeat="effect in effects_1")
+        input(id="{{effect.value}}", name="effectType", type="radio", ng-model="data.effectType", value="{{effect.value}}", ng-change="setModalData()")
+        label(for="{{effect.value}}") {{effect.name}}
+    .column
+      .item(ng-repeat="effect in effects_2")
+        input(id="{{effect.value}}", name="effectType", type="radio", ng-model="data.effectType", value="{{effect.value}}", ng-change="setModalData()")
+        label(for="{{effect.value}}") {{effect.name}}
 
   mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData")
     h3 Modal Dialog
