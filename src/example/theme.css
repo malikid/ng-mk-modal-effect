@@ -100,7 +100,6 @@ button:hover, button:focus {
     font-size: 1.2em;
     letter-spacing: 1px;
     margin: 0 0 0 70px;
-    /*margin: 0;*/
     text-transform: uppercase;
     line-height: 2;
 }
