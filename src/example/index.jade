@@ -24,29 +24,34 @@ body(ng-app='demo', ng-controller='demoCtrl')
         label(for="styleLeft") Left
         input#styleLeft(type="text", ng-model="data.modalData.style.left")
         button#modalTriggerBtn Open Modal
+        button(ng-click="resetStyle()") Reset
 
   .main.clearfix
     .column
-      .item(ng-repeat="effect in effects_1")
+      .item(id="{{effect.value}}Container", ng-repeat="effect in effects_1")
         input(id="{{effect.value}}", name="effectType", type="radio", ng-model="data.effectType", value="{{effect.value}}", ng-change="setModalData()")
         label(for="{{effect.value}}") {{effect.name}}
     .column
-      .item(ng-repeat="effect in effects_2")
+      .item(id="{{effect.value}}Container", ng-repeat="effect in effects_2")
         input(id="{{effect.value}}", name="effectType", type="radio", ng-model="data.effectType", value="{{effect.value}}", ng-change="setModalData()")
         label(for="{{effect.value}}") {{effect.name}}
 
-  mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData")
-    h3 Modal Dialog
-    div
-      p This is a modal window. You can do the following things with it:
-      ul
-        li
-          strong Read:
-          |  modal windows will probably tell you something important so don't forget to read what they say.
-        li
-          strong Look:
-          |  a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.
-        li
-          strong Close:
-          |  click on the button below to close the modal.
-      button#modalCloseBtn Close me!
+  mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", ng-switch="data.effectType")
+    .item(ng-switch-when="so")
+      input(type="radio", checked)
+      label Stand Out
+    div(ng-switch-default)
+      h3 Modal Dialog
+      div
+        p This is a modal window. You can do the following things with it:
+        ul
+          li
+            strong Read:
+            |  modal windows will probably tell you something important so don't forget to read what they say.
+          li
+            strong Look:
+            |  a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.
+          li
+            strong Close:
+            |  click on the button below to close the modal.
+        button#modalCloseBtn Close me!

@@ -7,7 +7,6 @@ angular.module("mkModal", []).directive "mkModal", () ->
       triggerElementId: "@"
       closeElementId: "@"
       data: "="
-      test: "="
     template: """{html}"""
 
     link: (scope, element, attrs) ->
@@ -59,6 +58,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
       init(scope.data)
 
       scope.$watch "data", (newValue, oldValue) ->
+
         return if newValue is oldValue
         init(newValue)
       , true
