@@ -94,13 +94,13 @@ button:hover, button:focus {
     box-shadow: -1px 0 0 rgba(0,0,0,0.1);
 }
 
-.column .item {
+.item {
     color: #726973;
     font-weight: 300;
     font-size: 1.2em;
     letter-spacing: 1px;
-    padding: 0 0 0 70px;
-    margin: 0;
+    margin: 0 0 0 70px;
+    /*margin: 0;*/
     text-transform: uppercase;
     line-height: 2;
 }
@@ -154,6 +154,14 @@ button:hover, button:focus {
 
 .mkmd-content > div ul li {
     padding: 5px 0;
+}
+
+.mkmd-content > .item {
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.15em;
+    text-align: left;
 }
 
 .mkmd-content button {

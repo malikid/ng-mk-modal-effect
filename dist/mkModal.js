@@ -6,8 +6,7 @@
       scope: {
         triggerElementId: "@",
         closeElementId: "@",
-        data: "=",
-        test: "="
+        data: "="
       },
       template: "<div id=\"mkmd\" class=\"mkmd-modal mkmd-modal-basic-y\">\n  <div ng-transclude=\"ng-transclude\" class=\"mkmd-content\"></div>\n</div>\n<div class=\"mkmd-overlay\"></div>",
       link: function(scope, element, attrs) {
@@ -46,6 +45,7 @@
           return $modal.css(cssObj);
         };
         init = function(data) {
+          console.log("data", data);
           if (data.effect) {
             setEffect(data.effect);
           }
@@ -59,6 +59,7 @@
         $closeBtn = $modal.find("#" + scope.closeElementId);
         init(scope.data);
         scope.$watch("data", function(newValue, oldValue) {
+          console.log("watch");
           if (newValue === oldValue) {
             return;
           }

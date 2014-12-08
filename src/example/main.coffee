@@ -27,33 +27,18 @@
     }, {
       name: "Side fall",
       value: "sf"
-    # }, {
-    #   name: "3D flip horizontal",
-    #   value: "3dfh"
-    # }, {
-    #   name: "3D flip vertical",
-    #   value: "3dfv"
-    # }, {
-    #   name: "3D sign",
-    #   value: "3dsign"
-    # }, {
-    #   name: "Super scaled",
-    #   value: "ss"
-    # }, {
-    #   name: "Just me",
-    #   value: "jm"
-    # }, {
-    #   name: "3D slit",
-    #   value: "3dslit"
-    # }, {
-    #   name: "3D Rotate from bottom",
-    #   value: "3dru"
-    # }, {
-    #   name: "3D Rotate in from left",
-    #   value: "3drr"
     }]
 
     $scope.effects_2 = [{
+      name: "Stand Out",
+      value: "so"
+    }, {
+      name: "Super scaled",
+      value: "ss"
+    }, {
+      name: "Just me",
+      value: "jm"
+    }, {
       name: "3D flip horizontal",
       value: "3dfh"
     }, {
@@ -62,12 +47,6 @@
     }, {
       name: "3D sign",
       value: "3dsign"
-    }, {
-      name: "Super scaled",
-      value: "ss"
-    }, {
-      name: "Just me",
-      value: "jm"
     }, {
       name: "3D slit",
       value: "3dslit"
@@ -79,16 +58,35 @@
       value: "3drr"
     }]
 
+    $scope.resetStyle = () ->
+      style = $scope.data.modalData.style
+      if $scope.data.effectType is "so"
+        testContainer = $("#soContainer")
+        style.height = testContainer.height()
+        style.width = testContainer.width()
+        style.top = testContainer.offset().top + style.height / 2
+        style.left = testContainer.offset().left + style.width / 2
+      else
+        style.height = "auto"
+        style.width = "70%"
+        style.top = "50%"
+        style.left = "50%"
+      $scope.$apply()
+
     $scope.setModalData = () ->
       $scope.data.modalData.effect = "mkmd-effect-" + $scope.data.effectType
+      $scope.resetStyle()
 
     $scope.data =
-      effectType: "fi"
+      effectType: "so"
       modalData:
-        effect: "mkmd-effect-fi"
+        effect: "mkmd-effect-so"
         style:
           height: "auto"
           width: "70%"
+
+    angular.element(document).ready () ->
+      $scope.setModalData()
 
     return
 
