@@ -22,7 +22,7 @@ jquery: ~2.1.1
 
 ### Usage
 
-##### In Angular Controller
+##### In Angular Controller (ref: [Effect Types](https://github.com/malikid/ng-mk-modal-effect/blob/gh-pages/README.md#effect-types))
 ```
 $scope.data =
   modalData:
@@ -34,6 +34,7 @@ $scope.data =
       height: "auto"
       width: "70%"
 ```
+
 
 ##### In Template
 
@@ -68,21 +69,21 @@ mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn",
 
 ##### Tag
 
-> ####### mk-modal
+    mk-modal
 
 ##### Attributes
 
-> ###### trigger-element-id
+- ##### trigger-element-id
 
->> *REQUIRED!* Id of the element on original page to trigger modal open event.
+    *REQUIRED!* Id of the element on original page to trigger modal open event.
 
-> ###### close-element-id
+- ##### close-element-id
 
->> *OPTIONAL.* Id of the element in modal to trigger modal close event.
+    *OPTIONAL.* Id of the element in modal to trigger modal close event.
 
-> ###### data
+- ##### data
 
->> *REQUIRED!* Data of this modal.
+    *REQUIRED!* Data of this modal.
 
 
 
