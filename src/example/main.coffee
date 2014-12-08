@@ -4,19 +4,19 @@
   app.controller "demoCtrl", ($scope) ->
 
     $scope.effects_1 = [{
-      name: "Fade in and scale up",
+      name: "Fade In and Scale Up",
       value: "fi"
     }, {
-      name: "Slide from the right",
+      name: "Slide from the Right",
       value: "sl"
     }, {
-      name: "Slide from the bottom",
+      name: "Slide from the Bottom",
       value: "su"
     }, {
-      name: "Slide down and stick at top",
+      name: "Slide Down and Stick At Top",
       value: "sdsat"
     }, {
-      name: "Slide up and stick at bottom",
+      name: "Slide Up and Stick At Bottom",
       value: "susab"
     }, {
       name: "Newspaper",
@@ -25,7 +25,7 @@
       name: "Fall",
       value: "f"
     }, {
-      name: "Side fall",
+      name: "Side Fall",
       value: "sf"
     }]
 
@@ -33,28 +33,28 @@
       name: "Stand Out",
       value: "so"
     }, {
-      name: "Super scaled",
+      name: "Super Scaled",
       value: "ss"
     }, {
-      name: "Just me",
+      name: "Just Me",
       value: "jm"
     }, {
-      name: "3D flip horizontal",
+      name: "3D Flip Horizontal",
       value: "3dfh"
     }, {
-      name: "3D flip vertical",
+      name: "3D Flip Vertical",
       value: "3dfv"
     }, {
-      name: "3D sign",
+      name: "3D Sign",
       value: "3dsign"
     }, {
-      name: "3D slit",
+      name: "3D Slit",
       value: "3dslit"
     }, {
-      name: "3D Rotate from bottom",
+      name: "3D Rotate from Bottom",
       value: "3dru"
     }, {
-      name: "3D Rotate in from left",
+      name: "3D Rotate in from Left",
       value: "3drr"
     }]
 
