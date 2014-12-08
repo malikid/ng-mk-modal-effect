@@ -45,7 +45,6 @@
           return $modal.css(cssObj);
         };
         init = function(data) {
-          console.log("data", data);
           if (data.effect) {
             setEffect(data.effect);
           }
@@ -59,7 +58,6 @@
         $closeBtn = $modal.find("#" + scope.closeElementId);
         init(scope.data);
         scope.$watch("data", function(newValue, oldValue) {
-          console.log("watch");
           if (newValue === oldValue) {
             return;
           }

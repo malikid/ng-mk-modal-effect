@@ -15,16 +15,18 @@ body(ng-app='demo', ng-controller='demoCtrl')
   header
     h1 Modal Style Settings
       span
-        label(for="styleHeight") Height
-        input#styleHeight(type="text", ng-model="data.modalData.style.height")
-        label(for="styleWidth") Width
-        input#styleWidth(type="text", ng-model="data.modalData.style.width")
-        label(for="styleTop") Top
-        input#styleTop(type="text", ng-model="data.modalData.style.top")
-        label(for="styleLeft") Left
-        input#styleLeft(type="text", ng-model="data.modalData.style.left")
-        button#modalTriggerBtn Open Modal
-        button(ng-click="resetStyle()") Reset
+        div
+          label(for="styleHeight") Height
+          input#styleHeight(type="text", ng-model="data.modalData.style.height")
+          label(for="styleWidth") Width
+          input#styleWidth(type="text", ng-model="data.modalData.style.width")
+          label(for="styleTop") Top
+          input#styleTop(type="text", ng-model="data.modalData.style.top")
+          label(for="styleLeft") Left
+          input#styleLeft(type="text", ng-model="data.modalData.style.left")
+        div
+          button(ng-click="resetStyle()") Reset
+          button#modalTriggerBtn(style="background: #aaa") Open Modal
 
   .main.clearfix
     .column
