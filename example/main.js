@@ -33,6 +33,15 @@
       ];
       $scope.effects_2 = [
         {
+          name: "Stand Out",
+          value: "so"
+        }, {
+          name: "Super scaled",
+          value: "ss"
+        }, {
+          name: "Just me",
+          value: "jm"
+        }, {
           name: "3D flip horizontal",
           value: "3dfh"
         }, {
@@ -41,12 +50,6 @@
         }, {
           name: "3D sign",
           value: "3dsign"
-        }, {
-          name: "Super scaled",
-          value: "ss"
-        }, {
-          name: "Just me",
-          value: "jm"
         }, {
           name: "3D slit",
           value: "3dslit"
@@ -58,19 +61,40 @@
           value: "3drr"
         }
       ];
+      $scope.resetStyle = function() {
+        var style, testContainer;
+        style = $scope.data.modalData.style;
+        if ($scope.data.effectType === "so") {
+          testContainer = $("#soContainer");
+          style.height = testContainer.height();
+          style.width = testContainer.width();
+          style.top = testContainer.offset().top + style.height / 2;
+          style.left = testContainer.offset().left + style.width / 2;
+        } else {
+          style.height = "auto";
+          style.width = "70%";
+          style.top = "50%";
+          style.left = "50%";
+        }
+        return $scope.$apply();
+      };
       $scope.setModalData = function() {
-        return $scope.data.modalData.effect = "mkmd-effect-" + $scope.data.effectType;
+        $scope.data.modalData.effect = "mkmd-effect-" + $scope.data.effectType;
+        return $scope.resetStyle();
       };
       $scope.data = {
-        effectType: "fi",
+        effectType: "so",
         modalData: {
-          effect: "mkmd-effect-fi",
+          effect: "mkmd-effect-so",
           style: {
             height: "auto",
             width: "70%"
           }
         }
       };
+      angular.element(document).ready(function() {
+        return $scope.setModalData();
+      });
     });
   })(angular);
 

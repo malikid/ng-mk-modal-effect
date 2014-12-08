@@ -6,8 +6,7 @@
       scope: {
         triggerElementId: "@",
         closeElementId: "@",
-        data: "=",
-        test: "="
+        data: "="
       },
       template: "<div id=\"mkmd\" class=\"mkmd-modal mkmd-modal-basic-y\">\n  <div ng-transclude=\"ng-transclude\" class=\"mkmd-content\"></div>\n</div>\n<div class=\"mkmd-overlay\"></div>",
       link: function(scope, element, attrs) {
