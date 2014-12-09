@@ -13,16 +13,26 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
       scope.oldEffect = null
 
+      addCloseBtnClickEvent = () ->
+
+        $closeBtn = scope.$modal.find("#" + scope.closeElementId)
+
+        $closeBtn.on("click", (el) ->
+
+          el.stopPropagation()
+          removeModalHandler()
+          
+        )
+
       removeModalHandler = () ->
 
-        $modal.removeClass("mkmd-show")
-        $(document.documentElement).removeClass("md-perspective") if scope.isWithPerspective
+        scope.$modal.removeClass("mkmd-show")
 
       setEffect = (newEffect) ->
 
-        $modal.removeClass(scope.oldEffect) if scope.oldEffect
+        scope.$modal.removeClass(scope.oldEffect) if scope.oldEffect
         scope.oldEffect = newEffect
-        $modal.addClass(newEffect)
+        scope.$modal.addClass(newEffect)
 
       setStyle = (effect, style) ->
 
@@ -33,12 +43,12 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
         switch effect
           when "mkmd-effect-sdsat" then break
-          when "mkmd-effect-susab" then $modal.removeClass("mkmd-modal-basic-y")
+          when "mkmd-effect-susab" then scope.$modal.removeClass("mkmd-modal-basic-y")
           else
-            $modal.addClass("mkmd-modal-basic-y")
+            scope.$modal.addClass("mkmd-modal-basic-y")
             cssObj.top = style.top
 
-        $modal.css(cssObj)
+        scope.$modal.css(cssObj)
 
       init = (data) ->
 
@@ -48,36 +58,30 @@ angular.module("mkModal", []).directive "mkModal", () ->
         if data.style
           setStyle(data.effect, data.style)
 
-      $overlay = $(".mkmd-overlay")
-      $element = $("#" + scope.triggerElementId)
-      $modal = $("#mkmd")
-      $closeBtn = $modal.find("#" + scope.closeElementId)
+        addCloseBtnClickEvent()
 
 
 
-      init(scope.data)
+      angular.element(document).ready () ->
 
-      scope.$watch "data", (newValue, oldValue) ->
+        $overlay = $(".mkmd-overlay")
+        $element = $("#" + scope.triggerElementId)
+        scope.$modal = $("#mkmd")
 
-        return if newValue is oldValue
-        init(newValue)
-      , true
+        init(scope.data)
 
+        scope.$watch "data", (newValue, oldValue) ->
 
+          init(newValue)
 
-      $element.on("click", (el) ->
+        , true
 
-        $modal.addClass("mkmd-show")
+        $element.on("click", (el) ->
 
-        $overlay.off("click", removeModalHandler)
-        $overlay.on("click", removeModalHandler)
+          scope.$modal.addClass("mkmd-show")
 
-      )
+          $overlay.off("click", removeModalHandler)
+          $overlay.on("click", removeModalHandler)
 
-      $closeBtn.on("click", (el) ->
-
-        el.stopPropagation()
-        removeModalHandler()
-        
-      )
+        )
   }
