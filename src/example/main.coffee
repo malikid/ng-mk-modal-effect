@@ -3,6 +3,8 @@
   app = ng.module("demo", ["mkModal"])
   app.controller "demoCtrl", ($scope) ->
 
+    $scope.isInit = true
+
     $scope.effects_1 = [{
       name: "Fade In and Scale Up",
       value: "fi"
@@ -59,7 +61,9 @@
     }]
 
     $scope.resetStyle = () ->
+
       style = $scope.data.modalData.style
+      
       if $scope.data.effectType is "so"
         testContainer = $("#soContainer")
         style.height = testContainer.height()
@@ -71,9 +75,13 @@
         style.width = "70%"
         style.top = "50%"
         style.left = "50%"
-      $scope.$apply()
+      
+      if $scope.isInit
+        $scope.isInit = false
+        $scope.$apply()
 
     $scope.setModalData = () ->
+
       $scope.data.modalData.effect = "mkmd-effect-" + $scope.data.effectType
       $scope.resetStyle()
 
@@ -86,6 +94,7 @@
           width: "70%"
 
     angular.element(document).ready () ->
+      
       $scope.setModalData()
 
     return
