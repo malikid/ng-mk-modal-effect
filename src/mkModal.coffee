@@ -15,7 +15,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
       addCloseBtnClickEvent = () ->
 
-        $closeBtn = scope.$modal.find("#" + scope.closeElementId)
+        $closeBtn = $("#" + scope.closeElementId)
 
         $closeBtn.on("click", (el) ->
 

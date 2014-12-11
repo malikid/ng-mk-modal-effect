@@ -14,7 +14,7 @@
         scope.oldEffect = null;
         addCloseBtnClickEvent = function() {
           var $closeBtn;
-          $closeBtn = scope.$modal.find("#" + scope.closeElementId);
+          $closeBtn = $("#" + scope.closeElementId);
           return $closeBtn.on("click", function(el) {
             el.stopPropagation();
             return removeModalHandler();
