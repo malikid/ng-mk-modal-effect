@@ -13,15 +13,16 @@
         var addCloseBtnClickEvent, init, removeModalHandler, setEffect, setStyle;
         scope.oldEffect = null;
         addCloseBtnClickEvent = function() {
-          var $closeBtn;
-          $closeBtn = $("#" + scope.closeElementId);
-          return $closeBtn.on("click", function(el) {
+          var $closeElement;
+          $closeElement = $("#" + scope.closeElementId);
+          return $closeElement.on("click", function(el) {
             el.stopPropagation();
             return removeModalHandler();
           });
         };
         removeModalHandler = function() {
-          return scope.$modal.removeClass("mkmd-show");
+          scope.$modal.removeClass("mkmd-show");
+          return scope.$body.removeClass("modal-open");
         };
         setEffect = function(newEffect) {
           if (scope.oldEffect) {
@@ -59,15 +60,17 @@
           return addCloseBtnClickEvent();
         };
         return angular.element(document).ready(function() {
-          var $element, $overlay;
+          var $overlay, $triggerElement;
           $overlay = $(".mkmd-overlay");
-          $element = $("#" + scope.triggerElementId);
+          $triggerElement = $("#" + scope.triggerElementId);
           scope.$modal = $("#mkmd");
+          scope.$body = $("body");
           init(scope.data);
           scope.$watch("data", function(newValue, oldValue) {
             return init(newValue);
           }, true);
-          return $element.on("click", function(el) {
+          return $triggerElement.on("click", function(el) {
+            scope.$body.addClass("modal-open");
             scope.$modal.addClass("mkmd-show");
             $overlay.off("click", removeModalHandler);
             return $overlay.on("click", removeModalHandler);

@@ -1,3 +1,8 @@
+/* For locking screen when modal is open */
+.modal-open {
+  overflow: hidden;
+}
+
 /* General styles for the modal */
 
 .mkmd-modal {

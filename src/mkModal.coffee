@@ -15,9 +15,9 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
       addCloseBtnClickEvent = () ->
 
-        $closeBtn = $("#" + scope.closeElementId)
+        $closeElement = $("#" + scope.closeElementId)
 
-        $closeBtn.on("click", (el) ->
+        $closeElement.on("click", (el) ->
 
           el.stopPropagation()
           removeModalHandler()
@@ -27,6 +27,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
       removeModalHandler = () ->
 
         scope.$modal.removeClass("mkmd-show")
+        scope.$body.removeClass("modal-open")
 
       setEffect = (newEffect) ->
 
@@ -65,8 +66,9 @@ angular.module("mkModal", []).directive "mkModal", () ->
       angular.element(document).ready () ->
 
         $overlay = $(".mkmd-overlay")
-        $element = $("#" + scope.triggerElementId)
+        $triggerElement = $("#" + scope.triggerElementId)
         scope.$modal = $("#mkmd")
+        scope.$body = $("body")
 
         init(scope.data)
 
@@ -76,8 +78,9 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
         , true
 
-        $element.on("click", (el) ->
+        $triggerElement.on("click", (el) ->
 
+          scope.$body.addClass("modal-open");
           scope.$modal.addClass("mkmd-show")
 
           $overlay.off("click", removeModalHandler)
