@@ -80,7 +80,6 @@
         $scope.isInit = false
         $scope.$apply()
 
-
     $scope.setModalData = () ->
 
       $scope.data.modalData.effect = "mkmd-effect-" + $scope.data.effectType
@@ -97,6 +96,16 @@
     angular.element(document).ready () ->
 
       $scope.setModalData()
+
+    $scope.modalClosedHandler = () ->
+
+      statusText = $("#statusText")[0]
+      statusText.innerHTML = "Modal Closed!"
+      setTimeout () ->
+        statusText.innerHTML = ""
+      , 2000
+
+
 
     return
 

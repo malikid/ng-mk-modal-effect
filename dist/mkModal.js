@@ -6,15 +6,23 @@
       scope: {
         triggerElementId: "@",
         closeElementId: "@",
-        data: "="
+        data: "=",
+        afterClosed: "&onClose"
       },
       template: "<div id=\"mkmd\" class=\"mkmd-modal mkmd-modal-basic-y\">\n  <div ng-transclude=\"ng-transclude\" class=\"mkmd-content\"></div>\n</div>\n<div class=\"mkmd-overlay\"></div>",
       link: function(scope, element, attrs) {
         var addCloseBtnClickEvent, init, removeModalHandler, setEffect, setStyle;
         scope.oldEffect = null;
+        scope.closeElement = null;
         addCloseBtnClickEvent = function() {
           var $closeElement;
+          if (!scope.closeElementId) {
+            return;
+          }
           $closeElement = $("#" + scope.closeElementId);
+          if ($closeElement) {
+            scope.closeElement = $closeElement;
+          }
           return $closeElement.on("click", function(el) {
             el.stopPropagation();
             return removeModalHandler();
@@ -22,7 +30,8 @@
         };
         removeModalHandler = function() {
           scope.$modal.removeClass("mkmd-show");
-          return scope.$body.removeClass("modal-open");
+          scope.$body.removeClass("modal-open");
+          return scope.afterClosed();
         };
         setEffect = function(newEffect) {
           if (scope.oldEffect) {

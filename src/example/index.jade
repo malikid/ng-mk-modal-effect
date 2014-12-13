@@ -25,6 +25,7 @@ body(ng-app='demo', ng-controller='demoCtrl')
           label(for="styleLeft") Left
           input#styleLeft(type="text", ng-model="data.modalData.style.left")
         div
+          #statusText
           button(ng-click="resetStyle()") Reset
           button#modalTriggerBtn(style="background: #aaa") Open Modal
 
@@ -38,7 +39,7 @@ body(ng-app='demo', ng-controller='demoCtrl')
         input(id="{{effect.value}}", name="effectType", type="radio", ng-model="data.effectType", value="{{effect.value}}", ng-change="setModalData()")
         label(for="{{effect.value}}") {{effect.name}}
 
-  mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", ng-switch="data.effectType")
+  mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", on-close="modalClosedHandler()", ng-switch="data.effectType")
     .item(ng-switch-when="so")
       input(type="radio", checked)
       label Stand Out

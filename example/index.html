@@ -24,6 +24,7 @@
           <input id="styleLeft" type="text" ng-model="data.modalData.style.left">
         </div>
         <div>
+          <div id="statusText"></div>
           <button ng-click="resetStyle()">Reset</button>
           <button id="modalTriggerBtn" style="background: #aaa">Open Modal</button>
         </div></span></h1>
@@ -42,7 +43,7 @@
       </div>
     </div>
   </div>
-  <mk-modal trigger-element-id="modalTriggerBtn" close-element-id="modalCloseBtn" data="data.modalData" ng-switch="data.effectType">
+  <mk-modal trigger-element-id="modalTriggerBtn" close-element-id="modalCloseBtn" data="data.modalData" on-close="modalClosedHandler()" ng-switch="data.effectType">
     <div ng-switch-when="so" class="item">
       <input type="radio" checked>
       <label>Stand Out</label>

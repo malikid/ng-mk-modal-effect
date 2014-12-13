@@ -99,6 +99,14 @@
       angular.element(document).ready(function() {
         return $scope.setModalData();
       });
+      $scope.modalClosedHandler = function() {
+        var statusText;
+        statusText = $("#statusText")[0];
+        statusText.innerHTML = "Modal Closed!";
+        return setTimeout(function() {
+          return statusText.innerHTML = "";
+        }, 2000);
+      };
     });
   })(angular);
 

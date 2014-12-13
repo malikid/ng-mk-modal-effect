@@ -7,15 +7,21 @@ angular.module("mkModal", []).directive "mkModal", () ->
       triggerElementId: "@"
       closeElementId: "@"
       data: "="
+      afterClosed: "&onClose"
     template: """{html}"""
 
     link: (scope, element, attrs) ->
 
       scope.oldEffect = null
+      scope.closeElement = null
 
       addCloseBtnClickEvent = () ->
 
+        unless scope.closeElementId
+          return
+
         $closeElement = $("#" + scope.closeElementId)
+        scope.closeElement = $closeElement if $closeElement
 
         $closeElement.on("click", (el) ->
 
@@ -28,6 +34,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
         scope.$modal.removeClass("mkmd-show")
         scope.$body.removeClass("modal-open")
+        scope.afterClosed()
 
       setEffect = (newEffect) ->
 
