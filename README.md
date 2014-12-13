@@ -33,6 +33,9 @@ $scope.data =
     style:
       height: "auto"
       width: "70%"
+
+$scope.modalClosedHandler = () ->
+  console.log "Modal is Closed!"
 ```
 
 
@@ -42,7 +45,7 @@ $scope.data =
 ```
 button#modalTriggerBtn Open Modal
 
-mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData")
+mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", on-close="modalClosedHandler()")
   div
    span Content to show, Angular binding with your controller still works here.
    button#modalCloseBtn Close Modal!
@@ -55,7 +58,7 @@ mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn",
   Open Modal
 </button>
 
-<mk-modal trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData">
+<mk-modal trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", on-close="modalClosedHandler()">
   <div>
     <span>
       Content to show in modal, angular binding with your controller still works here.
@@ -84,6 +87,10 @@ mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn",
 - ##### data
 
     *REQUIRED!* Data of this modal.
+
+- ##### on-close
+
+    *OPTIONAL.* Handler to be run after modal closed.
 
 
 
