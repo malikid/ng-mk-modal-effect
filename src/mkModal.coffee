@@ -7,7 +7,8 @@ angular.module("mkModal", []).directive "mkModal", () ->
       triggerElementId: "@"
       closeElementId: "@"
       data: "="
-      afterClosed: "&onClose"
+      beforeClosed: "&beforeClose"
+      afterClosed: "&afterClose"
     template: """{html}"""
 
     link: (scope, element, attrs) ->
@@ -32,6 +33,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
       removeModalHandler = () ->
 
+        scope.beforeClosed()
         scope.$modal.removeClass("mkmd-show")
         scope.$body.removeClass("modal-open")
         scope.afterClosed()

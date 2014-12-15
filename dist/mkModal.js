@@ -7,7 +7,8 @@
         triggerElementId: "@",
         closeElementId: "@",
         data: "=",
-        afterClosed: "&onClose"
+        beforeClosed: "&beforeClose",
+        afterClosed: "&afterClose"
       },
       template: "<div id=\"mkmd\" class=\"mkmd-modal mkmd-modal-basic-y\">\n  <div ng-transclude=\"ng-transclude\" class=\"mkmd-content\"></div>\n</div>\n<div class=\"mkmd-overlay\"></div>",
       link: function(scope, element, attrs) {
@@ -29,6 +30,7 @@
           });
         };
         removeModalHandler = function() {
+          scope.beforeClosed();
           scope.$modal.removeClass("mkmd-show");
           scope.$body.removeClass("modal-open");
           return scope.afterClosed();

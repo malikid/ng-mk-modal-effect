@@ -5,6 +5,7 @@
     app = ng.module("demo", ["mkModal"]);
     return app.controller("demoCtrl", function($scope) {
       $scope.isInit = true;
+      $scope.statusText = $("#statusText")[0];
       $scope.effects_1 = [
         {
           name: "Fade In and Scale Up",
@@ -99,13 +100,15 @@
       angular.element(document).ready(function() {
         return $scope.setModalData();
       });
-      $scope.modalClosedHandler = function() {
-        var statusText;
-        statusText = $("#statusText")[0];
-        statusText.innerHTML = "Modal Closed!";
+      $scope.modalAfterClosedHandler = function() {
+        $scope.statusText.innerHTML = "Modal Closed!";
         return setTimeout(function() {
-          return statusText.innerHTML = "";
+          $scope.statusText.innerHTML = "";
+          return $scope.statusText.style.color = "";
         }, 2000);
+      };
+      $scope.modalBeforeClosedHandler = function() {
+        return $scope.statusText.style.color = "red";
       };
     });
   })(angular);
