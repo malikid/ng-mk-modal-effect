@@ -52,8 +52,9 @@ angular.module("mkModal", []).directive "mkModal", () ->
           left: style.left
 
         switch effect
-          when "mkmd-effect-sdsat" then break
-          when "mkmd-effect-susab" then scope.$modal.removeClass("mkmd-modal-basic-y")
+          when "mkmd-effect-sdsat", "mkmd-effect-susab"
+            scope.$modal.removeClass("mkmd-modal-basic-y")
+            cssObj.top = ""
           else
             scope.$modal.addClass("mkmd-modal-basic-y")
             cssObj.top = style.top

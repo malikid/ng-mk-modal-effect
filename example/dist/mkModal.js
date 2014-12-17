@@ -51,9 +51,9 @@
           };
           switch (effect) {
             case "mkmd-effect-sdsat":
-              break;
             case "mkmd-effect-susab":
               scope.$modal.removeClass("mkmd-modal-basic-y");
+              cssObj.top = "";
               break;
             default:
               scope.$modal.addClass("mkmd-modal-basic-y");
