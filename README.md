@@ -5,6 +5,10 @@
 [Simple](http://malikid.github.io/ng-mk-modal-effect/example/simpleExample.html)  
 [Complete](http://malikid.github.io/ng-mk-modal-effect/example/)  
 
+or
+
+1. Clone this repository.
+2. Go into directory, and type `grunt server` / `grunt example`.
 
 
 ### Bower Package
@@ -34,8 +38,11 @@ $scope.data =
       height: "auto"
       width: "70%"
 
-$scope.modalClosedHandler = () ->
-  console.log "Modal is Closed!"
+$scope.modalBeforeClosedHandler = () ->
+  console.log "Modal is going to close!"
+
+$scope.modalAfterClosedHandler = () ->
+  console.log "Modal is closed!"
 ```
 
 
@@ -45,7 +52,7 @@ $scope.modalClosedHandler = () ->
 ```
 button#modalTriggerBtn Open Modal
 
-mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", on-close="modalClosedHandler()")
+mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", before-close="modalBeforeClosedHandler()", after-close="modalAfterClosedHandler()")
   div
    span Content to show, Angular binding with your controller still works here.
    button#modalCloseBtn Close Modal!
@@ -58,7 +65,7 @@ mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn",
   Open Modal
 </button>
 
-<mk-modal trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", on-close="modalClosedHandler()">
+<mk-modal trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", before-close="modalBeforeClosedHandler()", after-close="modalAfterClosedHandler()">
   <div>
     <span>
       Content to show in modal, angular binding with your controller still works here.
@@ -88,7 +95,11 @@ mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn",
 
     *REQUIRED!* Data of this modal.
 
-- ##### on-close
+- ##### before-close
+
+    *OPTIONAL.* Handler to be run before modal closed.
+
+- ##### after-close
 
     *OPTIONAL.* Handler to be run after modal closed.
 
