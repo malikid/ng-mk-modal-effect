@@ -4,6 +4,7 @@
   app.controller "demoCtrl", ($scope) ->
 
     $scope.isInit = true
+    $scope.statusText = $("#statusText")[0]
 
     $scope.effects_1 = [{
       name: "Fade In and Scale Up",
@@ -88,6 +89,7 @@
     $scope.data =
       effectType: "so"
       modalData:
+        zIndex: 10
         effect: "mkmd-effect-so"
         style:
           height: "auto"
@@ -97,13 +99,17 @@
 
       $scope.setModalData()
 
-    $scope.modalClosedHandler = () ->
+    $scope.modalAfterClosedHandler = () ->
 
-      statusText = $("#statusText")[0]
-      statusText.innerHTML = "Modal Closed!"
+      $scope.statusText.innerHTML = "Modal Closed!"
       setTimeout () ->
-        statusText.innerHTML = ""
+        $scope.statusText.innerHTML = ""
+        $scope.statusText.style.color = ""
       , 2000
+
+    $scope.modalBeforeClosedHandler = () ->
+
+      $scope.statusText.style.color = "red"
 
 
 

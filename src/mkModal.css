@@ -10,7 +10,7 @@
   left: 50%;
   width: 50%;
   height: 50%;
-  z-index: 2000;
+  /*z-index: 2000;*/
   visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -36,7 +36,7 @@
   visibility: hidden;
   top: 0;
   left: 0;
-  z-index: 1000;
+  /*z-index: 1000;*/
   opacity: 0;
   background: rgba(0, 0, 0, 0.7);
   -webkit-transition: all 0.3s;

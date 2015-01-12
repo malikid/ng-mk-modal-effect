@@ -7,7 +7,8 @@ angular.module("mkModal", []).directive "mkModal", () ->
       triggerElementId: "@"
       closeElementId: "@"
       data: "="
-      afterClosed: "&onClose"
+      beforeClosed: "&beforeClose"
+      afterClosed: "&afterClose"
     template: """{html}"""
 
     link: (scope, element, attrs) ->
@@ -32,6 +33,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
       removeModalHandler = () ->
 
+        scope.beforeClosed()
         scope.$modal.removeClass("mkmd-show")
         scope.$body.removeClass("modal-open")
         scope.afterClosed()
@@ -50,8 +52,9 @@ angular.module("mkModal", []).directive "mkModal", () ->
           left: style.left
 
         switch effect
-          when "mkmd-effect-sdsat" then break
-          when "mkmd-effect-susab" then scope.$modal.removeClass("mkmd-modal-basic-y")
+          when "mkmd-effect-sdsat", "mkmd-effect-susab"
+            scope.$modal.removeClass("mkmd-modal-basic-y")
+            cssObj.top = ""
           else
             scope.$modal.addClass("mkmd-modal-basic-y")
             cssObj.top = style.top
@@ -76,6 +79,10 @@ angular.module("mkModal", []).directive "mkModal", () ->
         $triggerElement = $("#" + scope.triggerElementId)
         scope.$modal = $("#mkmd")
         scope.$body = $("body")
+
+        zIndex = if typeof scope.data?.zIndex is "number" then scope.data.zIndex else 2000
+        scope.$modal.css("z-index", zIndex)
+        $overlay.css("z-index", zIndex - 1)
 
         init(scope.data)
 

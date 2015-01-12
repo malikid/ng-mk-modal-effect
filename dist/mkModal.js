@@ -7,7 +7,8 @@
         triggerElementId: "@",
         closeElementId: "@",
         data: "=",
-        afterClosed: "&onClose"
+        beforeClosed: "&beforeClose",
+        afterClosed: "&afterClose"
       },
       template: "<div id=\"mkmd\" class=\"mkmd-modal mkmd-modal-basic-y\">\n  <div ng-transclude=\"ng-transclude\" class=\"mkmd-content\"></div>\n</div>\n<div class=\"mkmd-overlay\"></div>",
       link: function(scope, element, attrs) {
@@ -29,6 +30,7 @@
           });
         };
         removeModalHandler = function() {
+          scope.beforeClosed();
           scope.$modal.removeClass("mkmd-show");
           scope.$body.removeClass("modal-open");
           return scope.afterClosed();
@@ -49,9 +51,9 @@
           };
           switch (effect) {
             case "mkmd-effect-sdsat":
-              break;
             case "mkmd-effect-susab":
               scope.$modal.removeClass("mkmd-modal-basic-y");
+              cssObj.top = "";
               break;
             default:
               scope.$modal.addClass("mkmd-modal-basic-y");
@@ -69,11 +71,14 @@
           return addCloseBtnClickEvent();
         };
         return angular.element(document).ready(function() {
-          var $overlay, $triggerElement;
+          var $overlay, $triggerElement, zIndex, _ref;
           $overlay = $(".mkmd-overlay");
           $triggerElement = $("#" + scope.triggerElementId);
           scope.$modal = $("#mkmd");
           scope.$body = $("body");
+          zIndex = typeof ((_ref = scope.data) != null ? _ref.zIndex : void 0) === "number" ? scope.data.zIndex : 2000;
+          scope.$modal.css("z-index", zIndex);
+          $overlay.css("z-index", zIndex - 1);
           init(scope.data);
           scope.$watch("data", function(newValue, oldValue) {
             return init(newValue);

@@ -43,7 +43,7 @@
       </div>
     </div>
   </div>
-  <mk-modal trigger-element-id="modalTriggerBtn" close-element-id="modalCloseBtn" data="data.modalData" on-close="modalClosedHandler()" ng-switch="data.effectType">
+  <mk-modal trigger-element-id="modalTriggerBtn" close-element-id="modalCloseBtn" data="data.modalData" before-close="modalBeforeClosedHandler()" after-close="modalAfterClosedHandler()" ng-switch="data.effectType">
     <div ng-switch-when="so" class="item">
       <input type="radio" checked>
       <label>Stand Out</label>
