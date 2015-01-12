@@ -30,10 +30,12 @@ jquery: ~2.1.1
 ```
 $scope.data =
   modalData:
+    // Modal z-index can be customized here. (Optional)
+    zIndex: 10
     // mkmd-effect-[effectType]. Effect types are listed below.
     effect: "mkmd-effect-so"
     // Actually, only height, width, top and left can be set.
-    // If none is set there are default values.
+    // If none is set they are default values.
     style:
       height: "auto"
       width: "70%"
