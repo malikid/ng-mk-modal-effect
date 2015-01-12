@@ -80,6 +80,10 @@ angular.module("mkModal", []).directive "mkModal", () ->
         scope.$modal = $("#mkmd")
         scope.$body = $("body")
 
+        zIndex = if typeof scope.data?.zIndex is "number" then scope.data.zIndex else 2000
+        scope.$modal.css("z-index", zIndex)
+        $overlay.css("z-index", zIndex - 1)
+
         init(scope.data)
 
         scope.$watch "data", (newValue, oldValue) ->

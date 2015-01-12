@@ -89,6 +89,7 @@
     $scope.data =
       effectType: "so"
       modalData:
+        zIndex: 10
         effect: "mkmd-effect-so"
         style:
           height: "auto"

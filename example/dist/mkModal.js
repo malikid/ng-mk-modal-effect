@@ -71,11 +71,14 @@
           return addCloseBtnClickEvent();
         };
         return angular.element(document).ready(function() {
-          var $overlay, $triggerElement;
+          var $overlay, $triggerElement, zIndex, _ref;
           $overlay = $(".mkmd-overlay");
           $triggerElement = $("#" + scope.triggerElementId);
           scope.$modal = $("#mkmd");
           scope.$body = $("body");
+          zIndex = typeof ((_ref = scope.data) != null ? _ref.zIndex : void 0) === "number" ? scope.data.zIndex : 2000;
+          scope.$modal.css("z-index", zIndex);
+          $overlay.css("z-index", zIndex - 1);
           init(scope.data);
           scope.$watch("data", function(newValue, oldValue) {
             return init(newValue);
