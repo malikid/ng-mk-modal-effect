@@ -6,13 +6,15 @@
       scope: {
         triggerElementId: "@",
         closeElementId: "@",
+        mkModalId: "@",
         data: "=",
         beforeClosed: "&beforeClose",
         afterClosed: "&afterClose"
       },
-      template: "<div id=\"mkmd\" class=\"mkmd-modal mkmd-modal-basic-y\">\n  <div ng-transclude=\"ng-transclude\" class=\"mkmd-content\"></div>\n</div>\n<div class=\"mkmd-overlay\"></div>",
+      template: "<div id=\"{{mkModalId}}\" class=\"mkmd-modal mkmd-modal-basic-y\">\n  <div ng-transclude=\"ng-transclude\" class=\"mkmd-content\"></div>\n</div>\n<div ng-if=\"data.showOverlay\" class=\"mkmd-overlay\"></div>",
       link: function(scope, element, attrs) {
         var addCloseBtnClickEvent, init, removeModalHandler, setEffect, setStyle;
+        scope.data.showOverlay = scope.data.showOverlay === void 0 ? true : scope.data.showOverlay;
         scope.oldEffect = null;
         scope.closeElement = null;
         addCloseBtnClickEvent = function() {
@@ -74,7 +76,7 @@
           var $overlay, $triggerElement, zIndex, _ref;
           $overlay = $(".mkmd-overlay");
           $triggerElement = $("#" + scope.triggerElementId);
-          scope.$modal = $("#mkmd");
+          scope.$modal = scope.mkModalId ? $("#" + scope.mkModalId) : $(".mkmd-modal");
           scope.$body = $("body");
           zIndex = typeof ((_ref = scope.data) != null ? _ref.zIndex : void 0) === "number" ? scope.data.zIndex : 2000;
           scope.$modal.css("z-index", zIndex);

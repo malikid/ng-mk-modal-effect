@@ -6,12 +6,14 @@ angular.module("mkModal", []).directive "mkModal", () ->
     scope:
       triggerElementId: "@"
       closeElementId: "@"
+      mkModalId: "@"
       data: "="
       beforeClosed: "&beforeClose"
       afterClosed: "&afterClose"
     template: """{html}"""
 
     link: (scope, element, attrs) ->
+      scope.data.showOverlay = if scope.data.showOverlay is undefined then true else scope.data.showOverlay
 
       scope.oldEffect = null
       scope.closeElement = null
@@ -28,7 +30,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
           el.stopPropagation()
           removeModalHandler()
-          
+
         )
 
       removeModalHandler = () ->
@@ -72,12 +74,11 @@ angular.module("mkModal", []).directive "mkModal", () ->
         addCloseBtnClickEvent()
 
 
-
       angular.element(document).ready () ->
-
         $overlay = $(".mkmd-overlay")
         $triggerElement = $("#" + scope.triggerElementId)
-        scope.$modal = $("#mkmd")
+
+        scope.$modal = if scope.mkModalId then $("#"+ scope.mkModalId) else $(".mkmd-modal")
         scope.$body = $("body")
 
         zIndex = if typeof scope.data?.zIndex is "number" then scope.data.zIndex else 2000
@@ -96,7 +97,6 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
           scope.$body.addClass("modal-open");
           scope.$modal.addClass("mkmd-show")
-
           $overlay.off("click", removeModalHandler)
           $overlay.on("click", removeModalHandler)
 

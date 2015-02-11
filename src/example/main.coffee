@@ -64,7 +64,7 @@
     $scope.resetStyle = () ->
 
       style = $scope.data.modalData.style
-      
+
       if $scope.data.effectType is "so"
         testContainer = $("#soContainer")
         style.height = testContainer.height()
@@ -76,7 +76,7 @@
         style.width = "70%"
         style.top = "50%"
         style.left = "50%"
-      
+
       if $scope.isInit
         $scope.isInit = false
         $scope.$apply()
