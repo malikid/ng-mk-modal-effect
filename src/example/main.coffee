@@ -90,6 +90,7 @@
       effectType: "so"
       modalData:
         zIndex: 10
+        # showOverlay: false
         effect: "mkmd-effect-so"
         style:
           height: "auto"

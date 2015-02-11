@@ -39,7 +39,7 @@ body(ng-app='demo', ng-controller='demoCtrl')
         input(id="{{effect.value}}", name="effectType", type="radio", ng-model="data.effectType", value="{{effect.value}}", ng-change="setModalData()")
         label(for="{{effect.value}}") {{effect.name}}
 
-  mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", before-close="modalBeforeClosedHandler()", after-close="modalAfterClosedHandler()", ng-switch="data.effectType")
+  mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", before-close="modalBeforeClosedHandler()", after-close="modalAfterClosedHandler()", ng-switch="data.effectType", mk-modal-id="mainModal")
     .item(ng-switch-when="so")
       input(type="radio", checked)
       label Stand Out

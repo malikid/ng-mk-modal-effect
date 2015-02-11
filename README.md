@@ -11,6 +11,7 @@ or
 2. Go into directory, and type `grunt server` / `grunt example`.
 
 
+
 ### Bower Package
 
 Name: **ng-mk-modal-effect**  
@@ -32,6 +33,8 @@ $scope.data =
   modalData:
     // Modal z-index can be customized here. (Optional)
     zIndex: 10
+    // To show gray overlay or not. (Optional)
+    showOverlay: false
     // mkmd-effect-[effectType]. Effect types are listed below.
     effect: "mkmd-effect-so"
     // Actually, only height, width, top and left can be set.
@@ -54,7 +57,7 @@ $scope.modalAfterClosedHandler = () ->
 ```
 button#modalTriggerBtn Open Modal
 
-mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", before-close="modalBeforeClosedHandler()", after-close="modalAfterClosedHandler()")
+mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", before-close="modalBeforeClosedHandler()", after-close="modalAfterClosedHandler()", mk-modal-id="mainModal")
   div
    span Content to show, Angular binding with your controller still works here.
    button#modalCloseBtn Close Modal!
@@ -67,7 +70,7 @@ mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn",
   Open Modal
 </button>
 
-<mk-modal trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", before-close="modalBeforeClosedHandler()", after-close="modalAfterClosedHandler()">
+<mk-modal trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn", data="data.modalData", before-close="modalBeforeClosedHandler()", after-close="modalAfterClosedHandler()", mk-modal-id="mainModal">
   <div>
     <span>
       Content to show in modal, angular binding with your controller still works here.
@@ -104,6 +107,10 @@ mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn",
 - ##### after-close
 
     *OPTIONAL.* Handler to be run after modal closed.
+
+- ##### mk-modal-id
+
+    *OPTIONAL.* Specify respective modal id when there are multiple modals.
 
 
 
