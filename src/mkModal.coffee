@@ -73,8 +73,8 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
         addCloseBtnClickEvent()
 
+      setTimeout (->
 
-      angular.element(document).ready () ->
         $overlay = $(".mkmd-overlay")
         $triggerElement = $("#" + scope.triggerElementId)
 
@@ -101,4 +101,5 @@ angular.module("mkModal", []).directive "mkModal", () ->
           $overlay.on("click", removeModalHandler)
 
         )
+      ), 0
   }
