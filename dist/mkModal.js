@@ -72,7 +72,7 @@
           }
           return addCloseBtnClickEvent();
         };
-        return angular.element(document).ready(function() {
+        return setTimeout((function() {
           var $overlay, $triggerElement, zIndex, _ref;
           $overlay = $(".mkmd-overlay");
           $triggerElement = $("#" + scope.triggerElementId);
@@ -91,7 +91,7 @@
             $overlay.off("click", removeModalHandler);
             return $overlay.on("click", removeModalHandler);
           });
-        });
+        }), 0);
       }
     };
   });
