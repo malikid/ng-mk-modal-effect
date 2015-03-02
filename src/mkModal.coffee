@@ -95,7 +95,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
         $triggerElement.on("click", (el) ->
 
-          scope.$body.addClass("modal-open");
+          scope.$body.addClass("modal-open") if scope.data.showOverlay
           scope.$modal.addClass("mkmd-show")
           $overlay.off("click", removeModalHandler)
           $overlay.on("click", removeModalHandler)

@@ -86,7 +86,9 @@
             return init(newValue);
           }, true);
           return $triggerElement.on("click", function(el) {
-            scope.$body.addClass("modal-open");
+            if (scope.data.showOverlay) {
+              scope.$body.addClass("modal-open");
+            }
             scope.$modal.addClass("mkmd-show");
             $overlay.off("click", removeModalHandler);
             return $overlay.on("click", removeModalHandler);
