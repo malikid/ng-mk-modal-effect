@@ -26,7 +26,7 @@
           if ($closeElement) {
             scope.closeElement = $closeElement;
           }
-          return $closeElement.on("click", function(el) {
+          $closeElement.on("click", function(el) {
             el.stopPropagation();
             return removeModalHandler();
           });
@@ -35,14 +35,14 @@
           scope.beforeClosed();
           scope.$modal.removeClass("mkmd-show");
           scope.$body.removeClass("modal-open");
-          return scope.afterClosed();
+          scope.afterClosed();
         };
         setEffect = function(newEffect) {
           if (scope.oldEffect) {
             scope.$modal.removeClass(scope.oldEffect);
           }
           scope.oldEffect = newEffect;
-          return scope.$modal.addClass(newEffect);
+          scope.$modal.addClass(newEffect);
         };
         setStyle = function(effect, style) {
           var cssObj;
@@ -61,7 +61,7 @@
               scope.$modal.addClass("mkmd-modal-basic-y");
               cssObj.top = style.top;
           }
-          return scope.$modal.css(cssObj);
+          scope.$modal.css(cssObj);
         };
         init = function(data) {
           if (data.effect) {
@@ -70,9 +70,9 @@
           if (data.style) {
             setStyle(data.effect, data.style);
           }
-          return addCloseBtnClickEvent();
+          addCloseBtnClickEvent();
         };
-        return setTimeout((function() {
+        setTimeout(function() {
           var $overlay, $triggerElement, zIndex, _ref;
           $overlay = $(".mkmd-overlay");
           $triggerElement = $("#" + scope.triggerElementId);
@@ -85,7 +85,7 @@
           scope.$watch("data", function(newValue, oldValue) {
             return init(newValue);
           }, true);
-          return $triggerElement.on("click", function(el) {
+          $triggerElement.on("click", function(el) {
             if (scope.data.showOverlay) {
               scope.$body.addClass("modal-open");
             }
@@ -93,7 +93,7 @@
             $overlay.off("click", removeModalHandler);
             return $overlay.on("click", removeModalHandler);
           });
-        }), 0);
+        }, 0);
       }
     };
   });

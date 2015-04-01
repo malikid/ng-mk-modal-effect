@@ -1,6 +1,7 @@
 angular.module("mkModal", []).directive "mkModal", () ->
 
   return {
+    
     restrict: "E"
     transclude: true
     scope:
@@ -13,6 +14,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
     template: """{html}"""
 
     link: (scope, element, attrs) ->
+
       scope.data.showOverlay = if scope.data.showOverlay is undefined then true else scope.data.showOverlay
 
       scope.oldEffect = null
@@ -33,18 +35,22 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
         )
 
+        return
+
       removeModalHandler = () ->
 
         scope.beforeClosed()
         scope.$modal.removeClass("mkmd-show")
         scope.$body.removeClass("modal-open")
         scope.afterClosed()
+        return
 
       setEffect = (newEffect) ->
 
         scope.$modal.removeClass(scope.oldEffect) if scope.oldEffect
         scope.oldEffect = newEffect
         scope.$modal.addClass(newEffect)
+        return
 
       setStyle = (effect, style) ->
 
@@ -62,6 +68,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
             cssObj.top = style.top
 
         scope.$modal.css(cssObj)
+        return
 
       init = (data) ->
 
@@ -72,8 +79,9 @@ angular.module("mkModal", []).directive "mkModal", () ->
           setStyle(data.effect, data.style)
 
         addCloseBtnClickEvent()
+        return
 
-      setTimeout (->
+      setTimeout () ->
 
         $overlay = $(".mkmd-overlay")
         $triggerElement = $("#" + scope.triggerElementId)
@@ -101,5 +109,10 @@ angular.module("mkModal", []).directive "mkModal", () ->
           $overlay.on("click", removeModalHandler)
 
         )
-      ), 0
+
+        return
+
+      , 0
+
+      return
   }
