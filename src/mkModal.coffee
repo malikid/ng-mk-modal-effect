@@ -1,4 +1,4 @@
-angular.module("mkModal", []).directive "mkModal", () ->
+angular.module("mkModal", []).directive "mkModal", ($timeout) ->
 
   return {
     
@@ -45,6 +45,12 @@ angular.module("mkModal", []).directive "mkModal", () ->
         scope.afterClosed()
         return
 
+      overlayClickHandler = () ->
+        removeModalHandler()
+        scope.$apply()
+        return
+
+
       setEffect = (newEffect) ->
 
         scope.$modal.removeClass(scope.oldEffect) if scope.oldEffect
@@ -81,7 +87,7 @@ angular.module("mkModal", []).directive "mkModal", () ->
         addCloseBtnClickEvent()
         return
 
-      setTimeout () ->
+      $timeout () ->
 
         $overlay = $(".mkmd-overlay")
         $triggerElement = $("#" + scope.triggerElementId)
@@ -105,8 +111,8 @@ angular.module("mkModal", []).directive "mkModal", () ->
 
           scope.$body.addClass("modal-open") if scope.data.showOverlay
           scope.$modal.addClass("mkmd-show")
-          $overlay.off("click", removeModalHandler)
-          $overlay.on("click", removeModalHandler)
+          $overlay.off("click", overlayClickHandler)
+          $overlay.on("click", overlayClickHandler)
 
         )
 

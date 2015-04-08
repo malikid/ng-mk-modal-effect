@@ -1,5 +1,5 @@
 (function() {
-  angular.module("mkModal", []).directive("mkModal", function() {
+  angular.module("mkModal", []).directive("mkModal", function($timeout) {
     return {
       restrict: "E",
       transclude: true,
@@ -13,7 +13,7 @@
       },
       template: "<div id=\"{{mkModalId}}\" class=\"mkmd-modal mkmd-modal-basic-y\">\n  <div ng-transclude=\"ng-transclude\" class=\"mkmd-content\"></div>\n</div>\n<div ng-if=\"data.showOverlay\" class=\"mkmd-overlay\"></div>",
       link: function(scope, element, attrs) {
-        var addCloseBtnClickEvent, init, removeModalHandler, setEffect, setStyle;
+        var addCloseBtnClickEvent, init, overlayClickHandler, removeModalHandler, setEffect, setStyle;
         scope.data.showOverlay = scope.data.showOverlay === void 0 ? true : scope.data.showOverlay;
         scope.oldEffect = null;
         scope.closeElement = null;
@@ -36,6 +36,10 @@
           scope.$modal.removeClass("mkmd-show");
           scope.$body.removeClass("modal-open");
           scope.afterClosed();
+        };
+        overlayClickHandler = function() {
+          removeModalHandler();
+          scope.$apply();
         };
         setEffect = function(newEffect) {
           if (scope.oldEffect) {
@@ -72,7 +76,7 @@
           }
           addCloseBtnClickEvent();
         };
-        setTimeout(function() {
+        $timeout(function() {
           var $overlay, $triggerElement, zIndex, _ref;
           $overlay = $(".mkmd-overlay");
           $triggerElement = $("#" + scope.triggerElementId);
@@ -90,8 +94,8 @@
               scope.$body.addClass("modal-open");
             }
             scope.$modal.addClass("mkmd-show");
-            $overlay.off("click", removeModalHandler);
-            return $overlay.on("click", removeModalHandler);
+            $overlay.off("click", overlayClickHandler);
+            return $overlay.on("click", overlayClickHandler);
           });
         }, 0);
       }
