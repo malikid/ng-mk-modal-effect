@@ -26,7 +26,8 @@
           if ($closeElement) {
             scope.closeElement = $closeElement;
           }
-          $closeElement.on("click", function(el) {
+          $closeElement.off("click." + scope.mkModalId);
+          $closeElement.on("click." + scope.mkModalId, function(el) {
             el.stopPropagation();
             return removeModalHandler();
           });
@@ -89,13 +90,13 @@
           scope.$watch("data", function(newValue, oldValue) {
             return init(newValue);
           }, true);
-          $triggerElement.on("click", function(el) {
+          $triggerElement.on("click." + scope.mkModalId, function(el) {
             if (scope.data.showOverlay) {
               scope.$body.addClass("modal-open");
             }
             scope.$modal.addClass("mkmd-show");
-            $overlay.off("click", overlayClickHandler);
-            return $overlay.on("click", overlayClickHandler);
+            $overlay.off("click." + scope.mkModalId, overlayClickHandler);
+            return $overlay.on("click." + scope.mkModalId, overlayClickHandler);
           });
         }, 0);
       }

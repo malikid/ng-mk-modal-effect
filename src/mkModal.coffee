@@ -28,9 +28,9 @@ angular.module("mkModal", []).directive "mkModal", ($timeout) ->
         $closeElement = $("#" + scope.closeElementId)
         scope.closeElement = $closeElement if $closeElement
 
-        $closeElement.off("click." + mkModalId)
+        $closeElement.off("click." + scope.mkModalId)
 
-        $closeElement.on("click." + mkModalId, (el) ->
+        $closeElement.on("click." + scope.mkModalId, (el) ->
 
           el.stopPropagation()
           removeModalHandler()
@@ -109,12 +109,12 @@ angular.module("mkModal", []).directive "mkModal", ($timeout) ->
 
         , true
 
-        $triggerElement.on("click." + mkModalId, (el) ->
+        $triggerElement.on("click." + scope.mkModalId, (el) ->
 
           scope.$body.addClass("modal-open") if scope.data.showOverlay
           scope.$modal.addClass("mkmd-show")
-          $overlay.off("click." + mkModalId, overlayClickHandler)
-          $overlay.on("click." + mkModalId, overlayClickHandler)
+          $overlay.off("click." + scope.mkModalId, overlayClickHandler)
+          $overlay.on("click." + scope.mkModalId, overlayClickHandler)
 
         )
 
