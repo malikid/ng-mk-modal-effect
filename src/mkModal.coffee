@@ -41,7 +41,7 @@ angular.module("mkModal", []).directive "mkModal", ($timeout) ->
 
       removeModalHandler = () ->
 
-        scope.beforeClosed()
+        return if scope.beforeClosed() is false
         scope.$modal.removeClass("mkmd-show")
         scope.$body.removeClass("modal-open")
         scope.afterClosed()

@@ -102,7 +102,7 @@ mk-modal(trigger-element-id="modalTriggerBtn", close-element-id="modalCloseBtn",
 
 - ##### before-close
 
-    *OPTIONAL.* Handler to be run before modal closed.
+    *OPTIONAL.* Handler to be run before modal closed, modal won't close if handler return false.
 
 - ##### after-close
 
