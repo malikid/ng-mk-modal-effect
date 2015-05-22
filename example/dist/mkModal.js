@@ -33,7 +33,9 @@
           });
         };
         removeModalHandler = function() {
-          scope.beforeClosed();
+          if (scope.beforeClosed() === false) {
+            return;
+          }
           scope.$modal.removeClass("mkmd-show");
           scope.$body.removeClass("modal-open");
           scope.afterClosed();
