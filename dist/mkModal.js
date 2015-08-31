@@ -8,6 +8,8 @@
         closeElementId: "@",
         mkModalId: "@",
         data: "=",
+        beforeOpened: "&beforeOpen",
+        afterOpened: "&afterOpen",
         beforeClosed: "&beforeClose",
         afterClosed: "&afterClose"
       },
@@ -93,12 +95,16 @@
             return init(newValue);
           }, true);
           $triggerElement.on("click." + scope.mkModalId, function(el) {
+            if (scope.beforeOpened() === false) {
+              return;
+            }
             if (scope.data.showOverlay) {
               scope.$body.addClass("modal-open");
             }
             scope.$modal.addClass("mkmd-show");
             $overlay.off("click." + scope.mkModalId, overlayClickHandler);
-            return $overlay.on("click." + scope.mkModalId, overlayClickHandler);
+            $overlay.on("click." + scope.mkModalId, overlayClickHandler);
+            return scope.afterOpened();
           });
         }, 0);
       }
