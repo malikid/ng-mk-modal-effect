@@ -1,7 +1,7 @@
 angular.module("mkModal", []).directive "mkModal", ($timeout) ->
 
   return {
-    
+
     restrict: "E"
     transclude: true
     scope:
@@ -9,6 +9,8 @@ angular.module("mkModal", []).directive "mkModal", ($timeout) ->
       closeElementId: "@"
       mkModalId: "@"
       data: "="
+      beforeOpened: "&beforeOpen"
+      afterOpened: "&afterOpen"
       beforeClosed: "&beforeClose"
       afterClosed: "&afterClose"
     template: """{html}"""
@@ -40,7 +42,7 @@ angular.module("mkModal", []).directive "mkModal", ($timeout) ->
         return
 
       removeModalHandler = () ->
-
+        ## 執行函式後，回傳 isClose -- false 就是不關閉
         return if scope.beforeClosed() is false
         scope.$modal.removeClass("mkmd-show")
         scope.$body.removeClass("modal-open")
@@ -110,11 +112,13 @@ angular.module("mkModal", []).directive "mkModal", ($timeout) ->
         , true
 
         $triggerElement.on("click." + scope.mkModalId, (el) ->
-
+          ## 執行函式後，回傳 isOpen -- false 就是不打開
+          return if scope.beforeOpened() is false
           scope.$body.addClass("modal-open") if scope.data.showOverlay
           scope.$modal.addClass("mkmd-show")
           $overlay.off("click." + scope.mkModalId, overlayClickHandler)
           $overlay.on("click." + scope.mkModalId, overlayClickHandler)
+          scope.afterOpened()
 
         )
 
